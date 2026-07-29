@@ -112,7 +112,7 @@ const HeroSection = () => {
   <span className="text-foreground font-medium"> websites</span>,
   <span className="text-foreground font-medium"> social media creatives</span>,
   <span className="text-foreground font-medium"> print media</span>, and
-  <span className="text-foreground font-medium"> user-centered digital experiences</span>
+  <span className="text-foreground font-medium"> user-centered digital experiences </span>
   since 2019.
 </p>
 
