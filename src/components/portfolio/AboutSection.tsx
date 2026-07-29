@@ -1,9 +1,7 @@
 import { GraduationCap, Briefcase, Star, MessageCircle, Award, Users } from "lucide-react";
 
 const education = [
-  { level: "SSC", status: "Completed successfully", year: "2017" },
-  { level: "HSC", status: "Completed successfully", year: "2019" },
-  { level: "Undergraduate Degree", status: "Completed successfully", year: "2022" },
+  { level: "Bachelor's Degree", status: "Completed successfully", year: "2022" },
   { level: "Master's Degree", status: "Completed successfully", year: "2026" },
 ];
 

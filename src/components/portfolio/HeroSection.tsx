@@ -97,16 +97,24 @@ const HeroSection = () => {
               </div>
               
               <h1 className="heading-xl">
-                Hello,
+                Designing,
                 <br />
-                <span className="gradient-text">I'm Harsh</span>
+                <span className="gradient-text">Brands
+                That People 
+                Remember.</span>
               </h1>
             </div>
 
             <p className="body-lg text-muted-foreground max-w-lg">
-              I'm a young designer with a limitless imagination, driven by creativity
-              that has no age. I turn ideas into <span className="text-foreground font-medium">clean</span>, <span className="text-foreground font-medium">modern</span>, and <span className="text-foreground font-medium">meaningful</span> designs.
-            </p>
+  Graphic Designer with a growing focus on{" "}
+  <span className="text-foreground font-medium">UI/UX Design</span>,
+  crafting <span className="text-foreground font-medium">brand identities</span>,
+  <span className="text-foreground font-medium"> websites</span>,
+  <span className="text-foreground font-medium"> social media creatives</span>,
+  <span className="text-foreground font-medium"> print media</span>, and
+  <span className="text-foreground font-medium"> user-centered digital experiences</span>
+  since 2019.
+</p>
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4">
