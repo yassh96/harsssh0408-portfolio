@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { useInView } from "@/hooks/useInView";
+
 import { X } from "lucide-react";
 
 const featured = [
@@ -60,12 +62,136 @@ const featured = [
 
 const FeaturedWorkSection = () => {
   const [selected, setSelected] = useState<typeof featured[0] | null>(null);
+  const [ratios, setRatios] = useState<Record<number, number>>({});
+  const [isMd, setIsMd] = useState(false);
+  const [stageRef, stageInView] = useInView<HTMLDivElement>("200px 0px");
+  const cardRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const progressRef = useRef(0);
+  const mouseTargetRef = useRef({ x: 0, y: 0 });
+  const mouseRef = useRef({ x: 0, y: 0 });
+  const lastTimeRef = useRef<number | null>(null);
+  const rectRef = useRef<DOMRect | null>(null);
+
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const update = () => setIsMd(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  // Adaptive card box: cards grow to the image's own aspect ratio while
+  // keeping a consistent visual area (no cropping, no letterboxing).
+  const cardBox = (ratio?: number) => {
+    const maxH = isMd ? 400 : 320;
+    const maxW = isMd ? 520 : 300;
+    const r = ratio ?? 0.8;
+    let h = maxH;
+    let w = h * r;
+    if (w > maxW) {
+      w = maxW;
+      h = w / r;
+    }
+    return { width: `${Math.round(w)}px`, height: `${Math.round(h)}px` };
+  };
+
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setSelected(null);
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
+
+  useEffect(() => {
+    if (!stageInView) {
+      lastTimeRef.current = null;
+      return;
+    }
+    const count = featured.length;
+    const step = (Math.PI * 2) / count;
+    const radius = 520;
+    const angularVel = 0.00022; // radians per ms => full loop ~28s
+
+    let raf = 0;
+
+
+    const tick = (t: number) => {
+      if (lastTimeRef.current == null) lastTimeRef.current = t;
+      const dt = t - lastTimeRef.current;
+      lastTimeRef.current = t;
+
+      progressRef.current += angularVel * dt;
+
+      // mouse inertia damping
+      mouseRef.current.x += (mouseTargetRef.current.x - mouseRef.current.x) * 0.06;
+      mouseRef.current.y += (mouseTargetRef.current.y - mouseRef.current.y) * 0.06;
+      const mx = mouseRef.current.x;
+      const my = mouseRef.current.y;
+
+      for (let i = 0; i < count; i++) {
+        const el = cardRefs.current[i];
+        if (!el) continue;
+        const angle = i * step + progressRef.current;
+        const sin = Math.sin(angle);
+        const cos = Math.cos(angle);
+
+        const x = sin * radius;
+        const z = cos * radius - radius; // front = 0, back = -2*radius
+        const rotY = -angle * (180 / Math.PI);
+
+        // "frontness": 1 at front, 0 at side, -1 at back
+        const front = cos;
+
+        // scale interpolation: front 1, side 0.88, back 0.75
+        let scale: number;
+        if (front >= 0) scale = 0.88 + front * 0.12;
+        else scale = 0.88 + front * 0.13; // 0.88 -> 0.75
+
+        // opacity + blur for back
+        const opacity = Math.max(0, 0.35 + (front + 1) * 0.325); // back 0.35, front 1
+        const blur = front < -0.2 ? Math.min(6, (Math.abs(front) - 0.2) * 8) : 0;
+
+        // parallax tilt only strong on front cards
+        const tiltStrength = Math.max(0, front);
+        const tiltY = mx * 12 * tiltStrength;
+        const tiltX = -my * 10 * tiltStrength;
+
+        el.style.transform =
+          `translate3d(-50%, -50%, 0) translate3d(${x}px, 0px, ${z}px) ` +
+          `rotateY(${rotY + tiltY}deg) rotateX(${tiltX}deg) scale(${scale})`;
+        el.style.opacity = String(opacity);
+        el.style.filter = blur ? `blur(${blur}px)` : "";
+        el.style.zIndex = String(Math.round((front + 1) * 500));
+        el.style.pointerEvents = front > 0.2 ? "auto" : "none";
+      }
+
+      raf = requestAnimationFrame(tick);
+    };
+
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [stageInView]);
+
+  // cache the stage rect so pointer moves never force a layout read
+  const onMouseEnter = useCallback(() => {
+    rectRef.current = stageRef.current?.getBoundingClientRect() ?? null;
+  }, [stageRef]);
+
+  const onMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = rectRef.current ?? stageRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    rectRef.current = rect;
+    const nx = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+    const ny = ((e.clientY - rect.top) / rect.height) * 2 - 1;
+    mouseTargetRef.current = { x: nx, y: ny };
+  }, [stageRef]);
+
+  const onMouseLeave = useCallback(() => {
+    rectRef.current = null;
+    mouseTargetRef.current = { x: 0, y: 0 };
+  }, []);
+
 
   return (
     <section id="showcase" className="section-padding">
@@ -84,32 +210,62 @@ const FeaturedWorkSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {featured.map((item) => (
-            <button
-              key={item.id}
-              type="button"
-              onClick={() => setSelected(item)}
-              className="group relative aspect-[4/5] modern-card overflow-hidden text-left"
-            >
-              <img
-                src={item.image}
-                alt={`${item.title} — ${item.category}`}
-                loading="lazy"
-                decoding="async"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="absolute inset-x-0 bottom-0 p-6 translate-y-3 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                <p className="text-xs uppercase tracking-widest text-background/70 mb-2 font-medium">
-                  {item.category}
-                </p>
-                <h3 className="font-display text-xl md:text-2xl font-semibold text-background">
-                  {item.title}
-                </h3>
-              </div>
-            </button>
-          ))}
+        <div
+          ref={stageRef}
+          onMouseEnter={onMouseEnter}
+          onMouseMove={onMouseMove}
+          onMouseLeave={onMouseLeave}
+          className="relative w-full h-[520px] md:h-[640px] overflow-hidden"
+          style={{ perspective: "1600px", perspectiveOrigin: "50% 50%" }}
+        >
+          <div
+            className="absolute inset-0"
+            style={{ transformStyle: "preserve-3d" }}
+          >
+            {featured.map((item, i) => (
+              <button
+                key={item.id}
+                ref={(el) => (cardRefs.current[i] = el)}
+                type="button"
+                onClick={() => setSelected(item)}
+                className="carousel-card group absolute left-1/2 top-1/2 modern-card overflow-hidden text-left"
+                style={{
+                  ...cardBox(ratios[item.id]),
+                  transformStyle: "preserve-3d",
+                  willChange: "transform, opacity, filter",
+                  backfaceVisibility: "hidden",
+                  transition: "box-shadow 300ms ease, filter 300ms ease",
+                }}
+              >
+                <img
+                  src={item.image}
+                  alt={`${item.title} — ${item.category}`}
+                  loading="lazy"
+                  decoding="async"
+                  draggable={false}
+                  onLoad={(e) => {
+                    const img = e.currentTarget;
+                    if (!img.naturalWidth || !img.naturalHeight) return;
+                    const r = img.naturalWidth / img.naturalHeight;
+                    setRatios((prev) =>
+                      prev[item.id] === r ? prev : { ...prev, [item.id]: r }
+                    );
+                  }}
+                  className="absolute inset-0 w-full h-full object-contain transition-[filter,transform] duration-500 ease-out group-hover:brightness-110 group-hover:scale-[1.02]"
+                />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-x-0 bottom-0 p-6 translate-y-3 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                  <p className="text-xs uppercase tracking-widest text-background/70 mb-2 font-medium">
+                    {item.category}
+                  </p>
+                  <h3 className="font-display text-xl md:text-2xl font-semibold text-background">
+                    {item.title}
+                  </h3>
+                </div>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -148,6 +304,12 @@ const FeaturedWorkSection = () => {
           </div>
         </div>
       )}
+
+      <style>{`
+        .carousel-card:hover {
+          box-shadow: 0 30px 60px -20px hsl(var(--foreground) / 0.35);
+        }
+      `}</style>
     </section>
   );
 };

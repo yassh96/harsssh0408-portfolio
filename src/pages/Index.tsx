@@ -1,11 +1,16 @@
+import { lazy } from "react";
 import Navigation from "@/components/portfolio/Navigation";
 import HeroSection from "@/components/portfolio/HeroSection";
 import AboutSection from "@/components/portfolio/AboutSection";
 import SkillsSection from "@/components/portfolio/SkillsSection";
-import FeaturedWorkSection from "@/components/portfolio/FeaturedWorkSection";
-import ServicesSection from "@/components/portfolio/ServicesSection";
-import PortfolioSection from "@/components/portfolio/PortfolioSection";
-import ContactSection from "@/components/portfolio/ContactSection";
+import DeferredSection from "@/components/portfolio/DeferredSection";
+
+const ExperienceSection = lazy(() => import("@/components/portfolio/ExperienceSection"));
+const FeaturedWorkSection = lazy(() => import("@/components/portfolio/FeaturedWorkSection"));
+const MotionShowcaseSection = lazy(() => import("@/components/portfolio/MotionShowcaseSection"));
+const PortfolioSection = lazy(() => import("@/components/portfolio/PortfolioSection"));
+const ParallaxGallerySection = lazy(() => import("@/components/portfolio/ParallaxGallerySection"));
+const ContactSection = lazy(() => import("@/components/portfolio/ContactSection"));
 
 const Index = () => {
   return (
@@ -15,10 +20,24 @@ const Index = () => {
         <HeroSection />
         <AboutSection />
         <SkillsSection />
-        <FeaturedWorkSection />
-        <ServicesSection />
-        <PortfolioSection />
-        <ContactSection />
+        <DeferredSection minHeight={900}>
+          <ExperienceSection />
+        </DeferredSection>
+        <DeferredSection minHeight={900}>
+          <FeaturedWorkSection />
+        </DeferredSection>
+        <DeferredSection minHeight={900}>
+          <ParallaxGallerySection />
+        </DeferredSection>
+        <DeferredSection minHeight={900}>
+          <MotionShowcaseSection />
+        </DeferredSection>
+        <DeferredSection minHeight={900}>
+          <PortfolioSection />
+        </DeferredSection>
+        <DeferredSection minHeight={700}>
+          <ContactSection />
+        </DeferredSection>
       </main>
     </div>
   );

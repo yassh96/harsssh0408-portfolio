@@ -8,7 +8,7 @@ const navLinks = [
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
   { label: "Showcase", href: "#showcase" },
-  { label: "Services", href: "#services" },
+  { label: "Motion", href: "#motion" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -18,25 +18,34 @@ const Navigation = () => {
   const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
-    const handleScroll = () => {
+    let ticking = false;
+
+    const read = () => {
+      ticking = false;
       setIsScrolled(window.scrollY > 50);
-      
+
       // Update active section based on scroll position
-      const sections = navLinks.map(link => link.href.slice(1));
-      for (const section of sections.reverse()) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 100) {
-            setActiveSection(section);
-            break;
-          }
+      for (let i = navLinks.length - 1; i >= 0; i--) {
+        const id = navLinks[i].href.slice(1);
+        const element = document.getElementById(id);
+        if (element && element.getBoundingClientRect().top <= 100) {
+          setActiveSection((prev) => (prev === id ? prev : id));
+          break;
         }
       }
     };
-    window.addEventListener("scroll", handleScroll);
+
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(read);
+    };
+
+    read();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
 
   const handleLinkClick = () => {
     setIsMobileMenuOpen(false);

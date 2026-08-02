@@ -35,10 +35,7 @@ const AboutSection = () => {
           <div className="space-y-8">
             <div className="space-y-6">
               <p className="body-lg text-muted-foreground">
-                I'm Harsh Bhidekar, a young and imaginative designer with a strong foundation in graphic design and visual storytelling, and a growing interest in UI/UX design. With <span className="text-foreground font-semibold">5–6 years</span> of hands-on experience, I've worked on client projects, local businesses, and creative pieces, crafting visuals that are both impactful and purposeful.
-              </p>
-              <p className="body-md text-muted-foreground">
-                I believe great design goes beyond aesthetics—it's about communication, consistency, and intent. My approach centers on creating work that feels modern, meaningful, and honest. Alongside this philosophy, I have gained extensive hands-on experience by successfully completing numerous professional projects as a Graphic Designer in a design lab, where I consistently translated ideas into clear, impactful visual solutions.
+                I'm Harsh Bhidekar, a Graphic Designer with <span className="text-foreground font-semibold">5–6 years</span> of hands-on experience creating impactful visuals for brands, businesses, and digital products. Passionate about visual storytelling and growing in UI/UX design, I focus on crafting clean, meaningful, and user-centered experiences.
               </p>
             </div>
 
