@@ -19,18 +19,5 @@ export default defineConfig(({ mode }) => ({
     target: "esnext",
     cssCodeSplit: true,
     chunkSizeWarningLimit: 1000,
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          if (id.includes("node_modules")) {
-            if (id.includes("framer-motion")) return "vendor-framer";
-            if (id.includes("lucide-react")) return "vendor-lucide";
-            if (id.includes("@radix-ui")) return "vendor-radix";
-            if (id.includes("react") || id.includes("react-dom")) return "vendor-react";
-            return "vendor";
-          }
-        },
-      },
-    },
   },
 }));
