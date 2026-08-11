@@ -1,6 +1,6 @@
 import { ChevronDown, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import harshProfile from "@/assets/harsh-profile-new.jpg";
+import harshProfile from "@/assets/harsh-profile-new.webp";
 import { useEffect, useRef, useState } from "react";
 
 const useCountUp = (end: number, duration: number = 2000) => {

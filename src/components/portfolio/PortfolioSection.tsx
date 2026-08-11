@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { X, ArrowUpRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import WebsitePortfolioModal from "./WebsitePortfolioModal";
 
 const projects = [
   {
@@ -49,20 +50,20 @@ const projects = [
     link: "https://drive.google.com/drive/folders/1xmGZj9aUNO__yvlqAsLQEWQJjPsvxwiA?usp=drive_link",
   },
   {
-    id: 6,
-    title: "Website Design",
-    category: "Web Design",
-    description:
-      "Complete website redesign for improved user experience, modern aesthetics, and better conversion rates.",
-    gradient: "from-cyan-500/20 via-teal-400/10 to-emerald-500/20",
-    link: "https://my-site-8klyovzd-69yassh69.wix-vibe.com/",
-  },
+  id: 6,
+  title: "Website Design",
+  category: "Web Design",
+  description:
+    "Explore my website design projects and live websites.",
+  gradient: "from-cyan-500/20 via-teal-400/10 to-emerald-500/20",
+},
 ];
 
 const PortfolioSection = () => {
   const { toast } = useToast();
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
   const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [websiteModalOpen, setWebsiteModalOpen] = useState(false);
 
   const openExternal = (url: string) => {
     const copyLink = async () => {
@@ -121,10 +122,12 @@ const PortfolioSection = () => {
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {projects.map((project) => {
-            const CardWrapper = project.link ? 'a' : 'div';
-            const cardProps = project.link 
-              ? { href: project.link, target: "_blank", rel: "noopener noreferrer" }
-              : { onClick: () => setSelectedProject(project) };
+            const CardWrapper = (project.link && project.id !== 6) ? 'a' : 'div';
+            const cardProps = project.id === 6
+              ? { onClick: () => setWebsiteModalOpen(true) }
+              : project.link 
+                ? { href: project.link, target: "_blank", rel: "noopener noreferrer" }
+                : { onClick: () => setSelectedProject(project) };
             
             return (
               <CardWrapper
@@ -233,6 +236,10 @@ const PortfolioSection = () => {
           </div>
         </div>
       )}
+      <WebsitePortfolioModal
+        open={websiteModalOpen}
+        onClose={() => setWebsiteModalOpen(false)}
+      />
     </section>
   );
 };
