@@ -7,9 +7,13 @@ const education = [
 
 const strengths = [
   { icon: Star, label: "Precision & Detail" },
-  { icon: Award, label: "Creative Solutions" },
-  { icon: MessageCircle, label: "Clear Communication" },
-  { icon: Users, label: "Client Relations" },
+  { icon: Award, label: "Creative Problem Solving" },
+  { icon: MessageCircle, label: "Visual Communication" },
+  { icon: Users, label: "Brand Consistency" },
+  { icon: MessageCircle, label: "Client Communication" },
+  { icon: Award, label: "Design-to-Production Workflow" },
+  { icon: Star, label: "AI-Assisted Creative Thinking" },
+  { icon: Users, label: "Continuous Learning" },
 ];
 
 const AboutSection = () => {
@@ -35,7 +39,16 @@ const AboutSection = () => {
           <div className="space-y-8">
             <div className="space-y-6">
               <p className="body-lg text-muted-foreground">
-                I'm Harsh Bhidekar, a Graphic Designer with <span className="text-foreground font-semibold">5–6 years</span> of hands-on experience creating impactful visuals for brands, businesses, and digital products. Passionate about visual storytelling and growing in UI/UX design, I focus on crafting clean, meaningful, and user-centered experiences.
+                I'm Harsh Bhidekar, a <span className="text-foreground font-semibold">Creative Designer</span> with <span className="text-foreground font-semibold">6+ years</span> of hands-on experience in graphic design, photo editing, print production, branding, and digital design.
+              </p>
+              <p className="body-lg text-muted-foreground">
+                My professional journey began in 2019 with commercial graphic design and photo editing, where I developed strong skills in Photoshop, colour correction, compositing, print production, client handling, and visual quality control.
+              </p>
+              <p className="body-lg text-muted-foreground">
+                From 2024 onward, I expanded my skill set into <span className="text-foreground font-semibold">UI/UX design, responsive web design, front-end development, and AI-assisted creative workflows</span>, combining visual design expertise with modern digital tools and technologies.
+              </p>
+              <p className="body-lg text-muted-foreground">
+                I focus on creating clean, purposeful, and visually engaging experiences across both traditional and digital platforms.
               </p>
             </div>
 
@@ -106,11 +119,14 @@ const AboutSection = () => {
                 </div>
                 <h3 className="font-display text-xl font-semibold">Experience</h3>
               </div>
-              <p className="stat-number !text-background mb-3">5-6 Years</p>
-              <p className="text-background/70 leading-relaxed">
-                Professional experience in editing and designing across diverse projects
-                including client work, local businesses, greeting cards, and photo albums.
+              <p className="stat-number !text-background mb-3">6+ Years</p>
+              <p className="text-background/70 leading-relaxed mb-4">
+                Professional experience spanning <span className="font-semibold">commercial graphic design, photo editing, print production, branding, digital creatives, UI/UX, and AI-assisted web design</span>.
               </p>
+              <ul className="text-background/70 leading-relaxed space-y-2 text-sm">
+                <li><span className="font-semibold text-background">2019–2024:</span> Core experience in graphic design, photo editing, commercial printing, and production.</li>
+                <li><span className="font-semibold text-background">2024–Present:</span> Expanded into UI/UX, web design, front-end implementation, AI-assisted design, and creative technology.</li>
+              </ul>
             </div>
           </div>
         </div>

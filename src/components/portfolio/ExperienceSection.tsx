@@ -3,17 +3,21 @@ import { Calendar, MapPin, Award, Building2 } from "lucide-react";
 
 const professionalExperiences = [
   {
-    role: "Graphic Designer",
+    role: "Creative Technologist / Graphic Designer",
     company: "Akshat Infomedia",
     location: "Pune, Maharashtra",
     duration: "July 2026 – Present",
     responsibilities: [
-      "Designing branding and visual identity systems",
-      "Creating social media campaigns and marketing creatives",
-      "Designing print and digital promotional materials",
-      "Working on website graphics, advertisements and brand assets",
-      "Collaborating with clients to deliver modern visual solutions",
-      "Maintaining brand consistency across multiple platforms",
+      "Manage visual design requirements across 12–14 active social media pages, creating regular social media creatives, campaigns, advertisements, and promotional content",
+      "Design and maintain brand identities, visual systems, and marketing assets for multiple client brands",
+      "Handle print design requirements, including promotional materials, marketing collateral, and production-ready artwork",
+      "Design web and digital experiences, including website graphics, landing pages, responsive layouts, and visual assets for online platforms",
+      "Work across diverse industries, including digital marketing, education, photography, beauty & wellness, F&B, and animation",
+      "Support creative requirements for Reliance Animation projects, adapting visual communication and design assets to project-specific requirements",
+      "Collaborate directly with clients and the internal creative team to translate briefs into practical and visually consistent solutions",
+      "Use Figma, Photoshop, Illustrator, AI tools, Lovable, Antigravity, and other modern creative technologies across different design and digital workflows",
+      "Explore and implement AI-assisted design and web development workflows to accelerate ideation, prototyping, and digital production",
+      "Maintain visual consistency and quality across social media, print, web, advertising, and digital brand touchpoints",
     ],
   },
   {
@@ -29,19 +33,19 @@ const professionalExperiences = [
     ],
   },
   {
-    role: "Graphic Designer",
+    role: "Graphic Designer / Photo Editor",
     company: "Satpute Digital Colour Lab",
     location: "Amravati, Maharashtra",
     duration: "May 2019 – June 2024",
     responsibilities: [
-      "Professional photo editing and advanced Photoshop compositing",
-      "High-end colour correction and retouching",
-      "Print-ready artwork preparation",
-      "Visiting cards, brochures, banners, flex and marketing materials",
-      "Custom photo frames and lamination graphics",
-      "Large-format printing workflow",
-      "Client revisions and production support",
-      "High-resolution print quality management",
+      "Delivered professional photo editing and advanced Photoshop compositing for commercial clients",
+      "Performed high-end colour correction, retouching, background manipulation, and image enhancement",
+      "Prepared print-ready artwork for visiting cards, brochures, banners, flex, photo frames, and marketing materials",
+      "Designed personalized photo frames, albums, greeting cards, and other customized visual products",
+      "Managed large-format printing workflows and digital-to-physical production requirements",
+      "Handled client interactions, design revisions, and production requirements",
+      "Maintained high-resolution output and print quality across different production formats",
+      "Worked within a high-volume commercial environment with regular client orders and tight turnaround requirements",
     ],
   },
 ];
@@ -217,6 +221,50 @@ const ExperienceSection = () => {
                   </li>
                 ))}
               </ul>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Professional Evolution */}
+        <motion.div
+          className="mt-20 md:mt-24 max-w-4xl mx-auto"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={fadeUp}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+        >
+          <div className="mb-8 md:mb-10 text-center">
+            <h3 className="heading-md">Professional Evolution</h3>
+          </div>
+          
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="modern-card p-6 border-t-4 border-t-muted-foreground/30 hover:border-t-foreground transition-colors">
+              <h4 className="font-display text-xl font-bold mb-3">2019–2024</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Graphic Design • Photo Editing • Photoshop • Print Production • Client Work
+              </p>
+            </div>
+            
+            <div className="modern-card p-6 border-t-4 border-t-muted-foreground/50 hover:border-t-foreground transition-colors">
+              <h4 className="font-display text-xl font-bold mb-3">2024–2025</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Digital Design • UI/UX Learning • Figma • Web Design • Front-End Foundations
+              </p>
+            </div>
+            
+            <div className="modern-card p-6 border-t-4 border-t-muted-foreground/80 hover:border-t-foreground transition-colors">
+              <h4 className="font-display text-xl font-bold mb-3">2025–Present</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                UI/UX • Responsive Websites • AI-Assisted Design • AI-Assisted Web Development • Creative Technology
+              </p>
+            </div>
+            
+            <div className="modern-card p-6 border-t-4 border-t-foreground bg-foreground text-background">
+              <h4 className="font-display text-xl font-bold mb-3">Today</h4>
+              <p className="text-sm text-background/80 leading-relaxed">
+                Combining <strong>6+ years of visual design experience</strong> with modern UI/UX, web, and AI-assisted creative workflows to build both compelling visuals and digital experiences.
+              </p>
             </div>
           </div>
         </motion.div>

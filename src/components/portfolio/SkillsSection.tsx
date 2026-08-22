@@ -1,29 +1,50 @@
-import { Palette, PenTool, Layout, Layers, MousePointer2, Sparkles } from "lucide-react";
+import { Palette, PenTool, Layout, Layers, MousePointer2, Sparkles, Image, Monitor, Code, GitBranch, Bot, Terminal, Blocks, Cpu, Lightbulb } from "lucide-react";
 
-const tools = [
-  { name: "Adobe Photoshop", icon: Palette, category: "Photo Editing" },
-  { name: "Adobe Illustrator", icon: PenTool, category: "Vector Graphics" },
-  { name: "Canva", icon: Layout, category: "Quick Design" },
-  { name: "CorelDraw", icon: Layers, category: "Vector Design" },
-  { name: "Figma", icon: MousePointer2, category: "UI/UX Design" },
-  { name: "AI Image Engineering", icon: Sparkles, category: "High-Fidelity Prompting & Upscaling" },
+const designTools = [
+  { name: "Adobe Photoshop", icon: Palette, category: "Photo Editing, Retouching & Compositing" },
+  { name: "Adobe Illustrator", icon: PenTool, category: "Vector Graphics & Brand Assets" },
+  { name: "Adobe Lightroom", icon: Image, category: "Colour Correction & Photo Enhancement" },
+  { name: "CorelDRAW", icon: Layers, category: "Print & Vector Design" },
+  { name: "Canva", icon: Layout, category: "Social Media & Marketing Creatives" },
+  { name: "Figma", icon: MousePointer2, category: "UI Design, Wireframing & Prototyping" },
+];
+
+const webTools = [
+  { name: "HTML & CSS", icon: Monitor, category: "Responsive Web Layouts" },
+  { name: "JavaScript", icon: Terminal, category: "Interactive Front-End Experiences" },
+  { name: "React & Tailwind CSS", icon: Code, category: "Modern Front-End Development" },
+  { name: "Git / GitHub / Vercel", icon: GitBranch, category: "Version Control & Deployment" },
+];
+
+const aiTools = [
+  { name: "Generative AI", icon: Sparkles, category: "Visual Ideation & Creative Exploration" },
+  { name: "AI Image Generation", icon: Image, category: "Concept Development & High-Fidelity Visuals" },
+  { name: "Prompt Engineering", icon: Terminal, category: "Detailed Creative Prompting" },
+  { name: "AI-Assisted Web Dev", icon: Code, category: "Rapid Website & Landing Page Prototyping" },
+  { name: "Lovable & Antigravity", icon: Blocks, category: "AI-Assisted Website Development" },
+  { name: "ChatGPT, Claude & Gemini", icon: Bot, category: "Creative Research, Ideation & Dev Assistance" },
 ];
 
 const expertise = [
   {
     title: "Graphic Design",
-    description: "Crafting visual stories through layouts, branding, and creative compositions.",
+    description: "Creating visual communication through branding, layouts, marketing creatives, print materials, photo editing, and digital compositions.",
     icon: Palette,
   },
   {
     title: "Web Design",
-    description: "Designing modern, responsive websites that captivate and convert visitors.",
+    description: "Designing modern, responsive websites and landing pages with a strong focus on visual hierarchy, usability, and brand consistency.",
     icon: Layout,
   },
   {
     title: "UI/UX Design",
-    description: "Creating intuitive and engaging user interfaces that prioritize user experience.",
+    description: "Creating clean and intuitive interfaces through wireframes, visual systems, responsive layouts, and user-focused design thinking.",
     icon: MousePointer2,
+  },
+  {
+    title: "AI Creative Technology",
+    description: "Combining design expertise with generative AI and AI-assisted development to explore ideas, prototype faster, and create modern digital experiences.",
+    icon: Lightbulb,
   },
 ];
 
@@ -44,33 +65,73 @@ const SkillsSection = () => {
 
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-start">
           {/* Design Tools - Card Grid */}
-          <div className="flex flex-col h-full">
-            <h3 className="font-display text-xl font-semibold mb-8">Design Tools</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-1">
-              {tools.map((tool, index) => (
-                <div
-                  key={index}
-                  className="group modern-card p-6 cursor-default hover:bg-foreground hover:text-background transition-all duration-300"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-xl bg-secondary group-hover:bg-background/10 flex items-center justify-center transition-colors">
-                      <tool.icon size={32} className="text-foreground group-hover:text-background transition-colors" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold">{tool.name}</h4>
-                      <p className="text-sm text-muted-foreground group-hover:text-background/70 transition-colors">
-                        {tool.category}
-                      </p>
+          <div className="flex flex-col h-full space-y-12">
+            <div>
+              <h3 className="font-display text-xl font-semibold mb-6">Design Tools</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {designTools.map((tool, index) => (
+                  <div key={index} className="group modern-card p-4 cursor-default hover:bg-foreground hover:text-background transition-all duration-300">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-secondary group-hover:bg-background/10 flex items-center justify-center transition-colors shrink-0">
+                        <tool.icon size={24} className="text-foreground group-hover:text-background transition-colors" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-sm">{tool.name}</h4>
+                        <p className="text-xs text-muted-foreground group-hover:text-background/70 transition-colors line-clamp-2">
+                          {tool.category}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-              
-              {/* Additional Skills Tag */}
-              <div className="sm:col-span-2 flex items-center justify-center gap-2 p-5 rounded-xl border border-dashed border-border text-muted-foreground">
-                <Sparkles size={18} />
-                <span className="text-sm">Always learning new tools & technologies</span>
+                ))}
               </div>
+            </div>
+
+            <div>
+              <h3 className="font-display text-xl font-semibold mb-6">Web & UI/UX</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {webTools.map((tool, index) => (
+                  <div key={index} className="group modern-card p-4 cursor-default hover:bg-foreground hover:text-background transition-all duration-300">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-secondary group-hover:bg-background/10 flex items-center justify-center transition-colors shrink-0">
+                        <tool.icon size={24} className="text-foreground group-hover:text-background transition-colors" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-sm">{tool.name}</h4>
+                        <p className="text-xs text-muted-foreground group-hover:text-background/70 transition-colors line-clamp-2">
+                          {tool.category}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="font-display text-xl font-semibold mb-6">AI & Creative Technology</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {aiTools.map((tool, index) => (
+                  <div key={index} className="group modern-card p-4 cursor-default hover:bg-foreground hover:text-background transition-all duration-300">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-secondary group-hover:bg-background/10 flex items-center justify-center transition-colors shrink-0">
+                        <tool.icon size={24} className="text-foreground group-hover:text-background transition-colors" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-sm">{tool.name}</h4>
+                        <p className="text-xs text-muted-foreground group-hover:text-background/70 transition-colors line-clamp-2">
+                          {tool.category}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            <div className="flex items-center justify-center gap-2 p-5 rounded-xl border border-dashed border-border text-muted-foreground">
+              <Sparkles size={18} />
+              <span className="text-sm">Always learning new tools, technologies, and creative workflows.</span>
             </div>
           </div>
 
@@ -84,7 +145,7 @@ const SkillsSection = () => {
                   className="group modern-card p-6 cursor-default flex-1"
                 >
                   <div className="flex items-start gap-6">
-                    <div className="w-16 h-16 rounded-xl bg-foreground/5 group-hover:bg-foreground group-hover:text-background flex items-center justify-center transition-all duration-300">
+                    <div className="w-16 h-16 rounded-xl bg-foreground/5 group-hover:bg-foreground group-hover:text-background flex items-center justify-center transition-all duration-300 shrink-0">
                       <item.icon size={32} className="text-foreground group-hover:text-background transition-colors" />
                     </div>
                     <div>
