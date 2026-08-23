@@ -105,24 +105,48 @@ const VideoCard = memo(({
   const ref = useRef<HTMLButtonElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // only decode/play video while it is actually on screen
+  // Ensure video auto-plays and loops continuously without user interaction
   useEffect(() => {
     const el = videoRef.current;
-    if (!el || !("IntersectionObserver" in window)) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        const visible = entries[0]?.isIntersecting;
-        if (visible) {
-          const p = el.play();
-          if (p && typeof p.catch === "function") p.catch(() => {});
-        } else if (!el.paused) {
-          el.pause();
-        }
-      },
-      { rootMargin: "150px 0px", threshold: 0.01 }
-    );
-    io.observe(el);
-    return () => io.disconnect();
+    if (!el) return;
+
+    el.muted = true;
+    el.defaultMuted = true;
+
+    const playVideo = () => {
+      el.muted = true;
+      const p = el.play();
+      if (p && typeof p.catch === "function") {
+        p.catch(() => {});
+      }
+    };
+
+    // Trigger play immediately and on readiness
+    playVideo();
+    el.addEventListener("loadeddata", playVideo);
+    el.addEventListener("canplay", playVideo);
+
+    let io: IntersectionObserver | null = null;
+    if ("IntersectionObserver" in window) {
+      io = new IntersectionObserver(
+        (entries) => {
+          const visible = entries[0]?.isIntersecting;
+          if (visible) {
+            playVideo();
+          } else if (!el.paused) {
+            el.pause();
+          }
+        },
+        { rootMargin: "300px 0px", threshold: 0.01 }
+      );
+      io.observe(el);
+    }
+
+    return () => {
+      el.removeEventListener("loadeddata", playVideo);
+      el.removeEventListener("canplay", playVideo);
+      if (io) io.disconnect();
+    };
   }, []);
 
   const mx = useMotionValue(0);
@@ -204,8 +228,13 @@ const VideoCard = memo(({
               muted
               loop
               playsInline
-              preload="metadata"
+              preload="auto"
               disablePictureInPicture
+              onLoadedData={(e) => {
+                const v = e.currentTarget;
+                v.muted = true;
+                v.play().catch(() => {});
+              }}
               className="block h-auto w-full object-contain"
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-25" />
