@@ -63,21 +63,21 @@ const SkillsSection = () => {
           </h2>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-          {/* Design Tools - Card Grid */}
-          <div className="flex flex-col h-full space-y-8">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          {/* Design Tools - Card Grid (Left side: 7 cols) */}
+          <div className="lg:col-span-7 flex flex-col h-full space-y-7">
             <div>
-              <h3 className="font-display text-2xl md:text-[26px] font-bold text-[#111111] dark:text-foreground mb-4">Design Tools</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5">
+              <h3 className="font-display text-2xl md:text-[26px] font-bold text-[#111111] dark:text-foreground mb-3.5">Design Tools</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
                 {designTools.map((tool, index) => (
-                  <div key={index} className="group modern-card p-3 sm:p-3.5 cursor-default hover:bg-foreground hover:text-background transition-all duration-300">
-                    <div className="flex items-center gap-3 sm:gap-3.5">
-                      <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-secondary group-hover:bg-background/10 flex items-center justify-center transition-colors shrink-0">
-                        <tool.icon size={20} className="text-foreground group-hover:text-background transition-colors" />
+                  <div key={index} className="group modern-card px-4 py-3 cursor-default hover:bg-foreground hover:text-background transition-all duration-300">
+                    <div className="flex items-center gap-3">
+                      <div className="w-[38px] h-[38px] rounded-lg bg-secondary group-hover:bg-background/10 flex items-center justify-center transition-colors shrink-0">
+                        <tool.icon size={19} className="text-foreground group-hover:text-background transition-colors" />
                       </div>
                       <div className="min-w-0 flex-1">
-                        <h4 className="font-display font-bold text-[15px] sm:text-base text-[#111111] group-hover:text-background dark:text-foreground transition-colors leading-tight truncate">{tool.name}</h4>
-                        <p className="font-body text-xs sm:text-[13px] leading-snug text-[#4A4A4A] group-hover:text-background/80 dark:text-muted-foreground transition-colors mt-0.5 line-clamp-2">
+                        <h4 className="font-display font-bold text-[15px] text-[#111111] group-hover:text-background dark:text-foreground transition-colors leading-tight truncate">{tool.name}</h4>
+                        <p className="font-body text-[13px] leading-[1.35] text-[#555555] group-hover:text-background/80 dark:text-muted-foreground transition-colors mt-0.5 line-clamp-2">
                           {tool.category}
                         </p>
                       </div>
@@ -88,17 +88,17 @@ const SkillsSection = () => {
             </div>
 
             <div>
-              <h3 className="font-display text-2xl md:text-[26px] font-bold text-[#111111] dark:text-foreground mb-4">Web & UI/UX</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5">
+              <h3 className="font-display text-2xl md:text-[26px] font-bold text-[#111111] dark:text-foreground mb-3.5">Web & UI/UX</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
                 {webTools.map((tool, index) => (
-                  <div key={index} className="group modern-card p-3 sm:p-3.5 cursor-default hover:bg-foreground hover:text-background transition-all duration-300">
-                    <div className="flex items-center gap-3 sm:gap-3.5">
-                      <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-secondary group-hover:bg-background/10 flex items-center justify-center transition-colors shrink-0">
-                        <tool.icon size={20} className="text-foreground group-hover:text-background transition-colors" />
+                  <div key={index} className="group modern-card px-4 py-3 cursor-default hover:bg-foreground hover:text-background transition-all duration-300">
+                    <div className="flex items-center gap-3">
+                      <div className="w-[38px] h-[38px] rounded-lg bg-secondary group-hover:bg-background/10 flex items-center justify-center transition-colors shrink-0">
+                        <tool.icon size={19} className="text-foreground group-hover:text-background transition-colors" />
                       </div>
                       <div className="min-w-0 flex-1">
-                        <h4 className="font-display font-bold text-[15px] sm:text-base text-[#111111] group-hover:text-background dark:text-foreground transition-colors leading-tight truncate">{tool.name}</h4>
-                        <p className="font-body text-xs sm:text-[13px] leading-snug text-[#4A4A4A] group-hover:text-background/80 dark:text-muted-foreground transition-colors mt-0.5 line-clamp-2">
+                        <h4 className="font-display font-bold text-[15px] text-[#111111] group-hover:text-background dark:text-foreground transition-colors leading-tight truncate">{tool.name}</h4>
+                        <p className="font-body text-[13px] leading-[1.35] text-[#555555] group-hover:text-background/80 dark:text-muted-foreground transition-colors mt-0.5 line-clamp-2">
                           {tool.category}
                         </p>
                       </div>
@@ -109,17 +109,17 @@ const SkillsSection = () => {
             </div>
 
             <div>
-              <h3 className="font-display text-2xl md:text-[26px] font-bold text-[#111111] dark:text-foreground mb-4">AI & Creative Technology</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5">
+              <h3 className="font-display text-2xl md:text-[26px] font-bold text-[#111111] dark:text-foreground mb-3.5">AI & Creative Technology</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
                 {aiTools.map((tool, index) => (
-                  <div key={index} className="group modern-card p-3 sm:p-3.5 cursor-default hover:bg-foreground hover:text-background transition-all duration-300">
-                    <div className="flex items-center gap-3 sm:gap-3.5">
-                      <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-secondary group-hover:bg-background/10 flex items-center justify-center transition-colors shrink-0">
-                        <tool.icon size={20} className="text-foreground group-hover:text-background transition-colors" />
+                  <div key={index} className="group modern-card px-4 py-3 cursor-default hover:bg-foreground hover:text-background transition-all duration-300">
+                    <div className="flex items-center gap-3">
+                      <div className="w-[38px] h-[38px] rounded-lg bg-secondary group-hover:bg-background/10 flex items-center justify-center transition-colors shrink-0">
+                        <tool.icon size={19} className="text-foreground group-hover:text-background transition-colors" />
                       </div>
                       <div className="min-w-0 flex-1">
-                        <h4 className="font-display font-bold text-[15px] sm:text-base text-[#111111] group-hover:text-background dark:text-foreground transition-colors leading-tight truncate">{tool.name}</h4>
-                        <p className="font-body text-xs sm:text-[13px] leading-snug text-[#4A4A4A] group-hover:text-background/80 dark:text-muted-foreground transition-colors mt-0.5 line-clamp-2">
+                        <h4 className="font-display font-bold text-[15px] text-[#111111] group-hover:text-background dark:text-foreground transition-colors leading-tight truncate">{tool.name}</h4>
+                        <p className="font-body text-[13px] leading-[1.35] text-[#555555] group-hover:text-background/80 dark:text-muted-foreground transition-colors mt-0.5 line-clamp-2">
                           {tool.category}
                         </p>
                       </div>
@@ -129,30 +129,30 @@ const SkillsSection = () => {
               </div>
             </div>
             
-            <div className="flex items-center justify-center gap-2 p-3.5 rounded-xl border border-dashed border-border text-[#4A4A4A] dark:text-muted-foreground font-body text-xs sm:text-sm">
-              <Sparkles size={16} />
+            <div className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-dashed border-border text-[#555555] dark:text-muted-foreground font-body text-xs sm:text-[13px]">
+              <Sparkles size={15} />
               <span>Always learning new tools, technologies, and creative workflows.</span>
             </div>
           </div>
 
-          {/* Expertise Areas */}
-          <div className="flex flex-col h-full">
-            <h3 className="font-display text-2xl md:text-[26px] font-bold text-[#111111] dark:text-foreground mb-4 md:mb-6">Areas of Expertise</h3>
-            <div className="space-y-3 sm:space-y-3.5 flex-1 flex flex-col">
+          {/* Expertise Areas (Right side: 5 cols) */}
+          <div className="lg:col-span-5 flex flex-col h-full">
+            <h3 className="font-display text-2xl md:text-[26px] font-bold text-[#111111] dark:text-foreground mb-3.5 md:mb-4">Areas of Expertise</h3>
+            <div className="space-y-3 flex-1 flex flex-col justify-between">
               {expertise.map((item, index) => (
                 <div
                   key={index}
-                  className="group modern-card p-4 sm:p-5 cursor-default flex-1 flex flex-col justify-center"
+                  className="group modern-card p-5 cursor-default flex-1 flex flex-col justify-center"
                 >
-                  <div className="flex items-start gap-4 sm:gap-5">
-                    <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-foreground/5 group-hover:bg-foreground group-hover:text-background flex items-center justify-center transition-all duration-300 shrink-0">
-                      <item.icon size={24} className="text-foreground group-hover:text-background transition-colors" />
+                  <div className="flex items-start gap-4">
+                    <div className="w-11 h-11 rounded-xl bg-foreground/5 group-hover:bg-foreground group-hover:text-background flex items-center justify-center transition-all duration-300 shrink-0">
+                      <item.icon size={22} className="text-foreground group-hover:text-background transition-colors" />
                     </div>
                     <div>
-                      <h4 className="font-display font-bold text-base sm:text-lg md:text-xl text-[#111111] dark:text-foreground mb-1 group-hover:text-foreground transition-colors leading-snug">
+                      <h4 className="font-display font-bold text-lg md:text-[19px] text-[#111111] dark:text-foreground mb-1 group-hover:text-foreground transition-colors leading-snug">
                         {item.title}
                       </h4>
-                      <p className="font-body text-xs sm:text-sm leading-relaxed text-[#4A4A4A] dark:text-muted-foreground">
+                      <p className="font-body text-[13px] sm:text-sm leading-[1.45] text-[#555555] dark:text-muted-foreground">
                         {item.description}
                       </p>
                     </div>
