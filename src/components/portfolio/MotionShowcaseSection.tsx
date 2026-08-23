@@ -105,7 +105,7 @@ const VideoCard = memo(({
   const ref = useRef<HTMLButtonElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Ensure video auto-plays and loops continuously without user interaction
+  // Ensure video auto-plays, renders preview frame, and loops continuously without requiring user tap
   useEffect(() => {
     const el = videoRef.current;
     if (!el) return;
@@ -121,10 +121,25 @@ const VideoCard = memo(({
       }
     };
 
-    // Trigger play immediately and on readiness
+    const handleLoaded = () => {
+      el.muted = true;
+      if (el.currentTime === 0) {
+        try {
+          el.currentTime = 0.5;
+        } catch (e) {}
+      }
+      playVideo();
+    };
+
+    if (el.readyState >= 1) {
+      handleLoaded();
+    } else {
+      el.addEventListener("loadedmetadata", handleLoaded, { once: true });
+      el.addEventListener("loadeddata", handleLoaded, { once: true });
+      el.addEventListener("canplay", handleLoaded, { once: true });
+    }
+
     playVideo();
-    el.addEventListener("loadeddata", playVideo);
-    el.addEventListener("canplay", playVideo);
 
     let io: IntersectionObserver | null = null;
     if ("IntersectionObserver" in window) {
@@ -142,9 +157,16 @@ const VideoCard = memo(({
       io.observe(el);
     }
 
+    const unlock = () => playVideo();
+    window.addEventListener("touchstart", unlock, { passive: true, once: true });
+    window.addEventListener("scroll", unlock, { passive: true, once: true });
+
     return () => {
-      el.removeEventListener("loadeddata", playVideo);
-      el.removeEventListener("canplay", playVideo);
+      el.removeEventListener("loadedmetadata", handleLoaded);
+      el.removeEventListener("loadeddata", handleLoaded);
+      el.removeEventListener("canplay", handleLoaded);
+      window.removeEventListener("touchstart", unlock);
+      window.removeEventListener("scroll", unlock);
       if (io) io.disconnect();
     };
   }, []);
@@ -223,13 +245,21 @@ const VideoCard = memo(({
           <div className="relative w-full overflow-hidden rounded-[16px] bg-black">
             <video
               ref={videoRef}
-              src={item.src}
+              src={`${item.src}#t=0.5`}
               autoPlay
               muted
               loop
               playsInline
               preload="auto"
               disablePictureInPicture
+              onLoadedMetadata={(e) => {
+                const v = e.currentTarget;
+                v.muted = true;
+                if (v.currentTime === 0) {
+                  try { v.currentTime = 0.5; } catch (err) {}
+                }
+                v.play().catch(() => {});
+              }}
               onLoadedData={(e) => {
                 const v = e.currentTarget;
                 v.muted = true;

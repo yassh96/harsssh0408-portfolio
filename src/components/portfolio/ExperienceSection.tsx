@@ -227,7 +227,7 @@ const ExperienceSection = () => {
 
         {/* Professional Evolution */}
         <motion.div
-          className="mt-20 md:mt-24 max-w-4xl mx-auto"
+          className="mt-20 md:mt-24 max-w-5xl mx-auto"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
@@ -238,31 +238,31 @@ const ExperienceSection = () => {
             <h3 className="font-display text-3xl font-bold text-[#111111] dark:text-foreground">Professional Evolution</h3>
           </div>
           
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="modern-card p-6 border-t-4 border-t-muted-foreground/30 hover:border-t-foreground transition-colors">
-              <h4 className="font-display font-bold text-lg md:text-xl text-[#111111] dark:text-foreground mb-3">2019–2024</h4>
-              <p className="font-body text-sm md:text-[15px] leading-[1.5] text-[#4A4A4A] dark:text-muted-foreground">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 items-stretch">
+            <div className="modern-card p-5 md:p-6 border-t-4 border-t-muted-foreground/30 hover:border-t-foreground transition-colors flex flex-col justify-start h-full">
+              <h4 className="font-display font-bold text-lg md:text-xl text-[#111111] dark:text-foreground mb-2">2019–2024</h4>
+              <p className="font-body text-[13px] md:text-sm leading-[1.5] text-[#4A4A4A] dark:text-muted-foreground">
                 Graphic Design • Photo Editing • Photoshop • Print Production • Client Work
               </p>
             </div>
             
-            <div className="modern-card p-6 border-t-4 border-t-muted-foreground/50 hover:border-t-foreground transition-colors">
-              <h4 className="font-display font-bold text-lg md:text-xl text-[#111111] dark:text-foreground mb-3">2024–2025</h4>
-              <p className="font-body text-sm md:text-[15px] leading-[1.5] text-[#4A4A4A] dark:text-muted-foreground">
+            <div className="modern-card p-5 md:p-6 border-t-4 border-t-muted-foreground/50 hover:border-t-foreground transition-colors flex flex-col justify-start h-full">
+              <h4 className="font-display font-bold text-lg md:text-xl text-[#111111] dark:text-foreground mb-2">2024–2025</h4>
+              <p className="font-body text-[13px] md:text-sm leading-[1.5] text-[#4A4A4A] dark:text-muted-foreground">
                 Digital Design • UI/UX Learning • Figma • Web Design • Front-End Foundations
               </p>
             </div>
             
-            <div className="modern-card p-6 border-t-4 border-t-muted-foreground/80 hover:border-t-foreground transition-colors">
-              <h4 className="font-display font-bold text-lg md:text-xl text-[#111111] dark:text-foreground mb-3">2025–Present</h4>
-              <p className="font-body text-sm md:text-[15px] leading-[1.5] text-[#4A4A4A] dark:text-muted-foreground">
+            <div className="modern-card p-5 md:p-6 border-t-4 border-t-muted-foreground/80 hover:border-t-foreground transition-colors flex flex-col justify-start h-full">
+              <h4 className="font-display font-bold text-lg md:text-xl text-[#111111] dark:text-foreground mb-2">2025–Present</h4>
+              <p className="font-body text-[13px] md:text-sm leading-[1.5] text-[#4A4A4A] dark:text-muted-foreground">
                 UI/UX • Responsive Websites • AI-Assisted Design • AI-Assisted Web Development • Creative Technology
               </p>
             </div>
             
-            <div className="modern-card p-6 border-t-4 border-t-foreground bg-foreground text-background">
-              <h4 className="font-display font-bold text-lg md:text-xl text-background dark:text-background mb-3">Today</h4>
-              <p className="font-body text-sm md:text-[15px] leading-[1.5] text-background/80 dark:text-background/80">
+            <div className="modern-card p-5 md:p-6 border-t-4 border-t-foreground bg-foreground text-background flex flex-col justify-start h-full">
+              <h4 className="font-display font-bold text-lg md:text-xl text-background dark:text-background mb-2">Today</h4>
+              <p className="font-body text-[13px] md:text-sm leading-[1.5] text-background/80 dark:text-background/80">
                 Combining <strong className="text-background font-semibold">6+ years of visual design experience</strong> with modern UI/UX, web, and AI-assisted creative workflows to build both compelling visuals and digital experiences.
               </p>
             </div>
