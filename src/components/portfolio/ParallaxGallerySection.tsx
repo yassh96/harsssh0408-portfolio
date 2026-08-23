@@ -182,9 +182,9 @@ const ParallaxGallerySection = () => {
   }, [inView, sectionRef]);
 
   return (
-    <section id="gallery" className="section-padding overflow-hidden">
+    <section id="gallery" className="px-6 pt-20 pb-28 md:px-12 md:pt-28 md:pb-36 lg:px-24 overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-16 md:mb-20 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div className="mb-10 md:mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <div>
             <p className="text-muted-foreground font-medium tracking-widest uppercase text-sm mb-4">
               Gallery
@@ -202,7 +202,7 @@ const ParallaxGallerySection = () => {
 
       <div
         ref={sectionRef}
-        className="relative mx-auto max-w-[1600px] px-4 md:px-8 h-[70vh] md:h-[85vh] overflow-hidden"
+        className="mt-8 md:mt-12 relative mx-auto max-w-[1600px] px-4 md:px-8 h-[80vh] md:h-[92vh] min-h-[700px] md:min-h-[860px] overflow-hidden"
         style={{ perspective: "1200px" }}
       >
         <div className="flex gap-4 md:gap-6 h-full">
@@ -219,8 +219,8 @@ const ParallaxGallerySection = () => {
         </div>
 
         {/* soft fades to blend with page background */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-24 md:h-32 bg-gradient-to-b from-background to-transparent" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 md:h-32 bg-gradient-to-t from-background to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-28 md:h-36 bg-gradient-to-b from-background via-background/70 to-transparent z-10" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 md:h-36 bg-gradient-to-t from-background via-background/70 to-transparent z-10" />
       </div>
 
       <style>{`

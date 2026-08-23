@@ -194,11 +194,11 @@ const FeaturedWorkSection = () => {
 
 
   return (
-    <section id="showcase" className="section-padding">
+    <section id="showcase" className="px-6 pt-16 pb-10 md:px-12 md:pt-20 md:pb-12 lg:px-24 overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-16 md:mb-20 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div className="mb-6 md:mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4 md:gap-6">
           <div>
-            <p className="text-muted-foreground font-medium tracking-widest uppercase text-sm mb-4">
+            <p className="text-muted-foreground font-medium tracking-widest uppercase text-sm mb-2 md:mb-3">
               Featured Work
             </p>
             <h2 className="heading-lg">
@@ -215,7 +215,7 @@ const FeaturedWorkSection = () => {
           onMouseEnter={onMouseEnter}
           onMouseMove={onMouseMove}
           onMouseLeave={onMouseLeave}
-          className="relative w-full h-[520px] md:h-[640px] overflow-hidden"
+          className="relative w-full h-[460px] md:h-[560px] overflow-hidden"
           style={{ perspective: "1600px", perspectiveOrigin: "50% 50%" }}
         >
           <div
