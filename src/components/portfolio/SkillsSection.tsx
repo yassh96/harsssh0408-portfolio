@@ -71,13 +71,13 @@ const SkillsSection = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
                 {designTools.map((tool, index) => (
                   <div key={index} className="group modern-card px-4 py-3 cursor-default hover:bg-foreground hover:text-background transition-all duration-300">
-                    <div className="flex items-center gap-3">
-                      <div className="w-[38px] h-[38px] rounded-lg bg-secondary group-hover:bg-background/10 flex items-center justify-center transition-colors shrink-0">
-                        <tool.icon size={19} className="text-foreground group-hover:text-background transition-colors" />
+                    <div className="flex items-center gap-3.5">
+                      <div className="w-10 h-10 rounded-lg bg-secondary group-hover:bg-background/10 flex items-center justify-center transition-colors shrink-0">
+                        <tool.icon size={20} className="text-foreground group-hover:text-background transition-colors" />
                       </div>
                       <div className="min-w-0 flex-1">
-                        <h4 className="font-display font-bold text-[15px] text-[#111111] group-hover:text-background dark:text-foreground transition-colors leading-tight truncate">{tool.name}</h4>
-                        <p className="font-body text-[13px] leading-[1.35] text-[#555555] group-hover:text-background/80 dark:text-muted-foreground transition-colors mt-0.5 line-clamp-2">
+                        <h4 className="font-display font-bold text-[17px] sm:text-[18px] text-[#111111] group-hover:text-background dark:text-foreground transition-colors leading-tight mb-1 truncate">{tool.name}</h4>
+                        <p className="font-body text-[12.5px] sm:text-[13px] leading-[1.4] text-[#666666] group-hover:text-background/80 dark:text-muted-foreground transition-colors line-clamp-2">
                           {tool.category}
                         </p>
                       </div>
@@ -92,13 +92,13 @@ const SkillsSection = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
                 {webTools.map((tool, index) => (
                   <div key={index} className="group modern-card px-4 py-3 cursor-default hover:bg-foreground hover:text-background transition-all duration-300">
-                    <div className="flex items-center gap-3">
-                      <div className="w-[38px] h-[38px] rounded-lg bg-secondary group-hover:bg-background/10 flex items-center justify-center transition-colors shrink-0">
-                        <tool.icon size={19} className="text-foreground group-hover:text-background transition-colors" />
+                    <div className="flex items-center gap-3.5">
+                      <div className="w-10 h-10 rounded-lg bg-secondary group-hover:bg-background/10 flex items-center justify-center transition-colors shrink-0">
+                        <tool.icon size={20} className="text-foreground group-hover:text-background transition-colors" />
                       </div>
                       <div className="min-w-0 flex-1">
-                        <h4 className="font-display font-bold text-[15px] text-[#111111] group-hover:text-background dark:text-foreground transition-colors leading-tight truncate">{tool.name}</h4>
-                        <p className="font-body text-[13px] leading-[1.35] text-[#555555] group-hover:text-background/80 dark:text-muted-foreground transition-colors mt-0.5 line-clamp-2">
+                        <h4 className="font-display font-bold text-[17px] sm:text-[18px] text-[#111111] group-hover:text-background dark:text-foreground transition-colors leading-tight mb-1 truncate">{tool.name}</h4>
+                        <p className="font-body text-[12.5px] sm:text-[13px] leading-[1.4] text-[#666666] group-hover:text-background/80 dark:text-muted-foreground transition-colors line-clamp-2">
                           {tool.category}
                         </p>
                       </div>
@@ -113,13 +113,13 @@ const SkillsSection = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
                 {aiTools.map((tool, index) => (
                   <div key={index} className="group modern-card px-4 py-3 cursor-default hover:bg-foreground hover:text-background transition-all duration-300">
-                    <div className="flex items-center gap-3">
-                      <div className="w-[38px] h-[38px] rounded-lg bg-secondary group-hover:bg-background/10 flex items-center justify-center transition-colors shrink-0">
-                        <tool.icon size={19} className="text-foreground group-hover:text-background transition-colors" />
+                    <div className="flex items-center gap-3.5">
+                      <div className="w-10 h-10 rounded-lg bg-secondary group-hover:bg-background/10 flex items-center justify-center transition-colors shrink-0">
+                        <tool.icon size={20} className="text-foreground group-hover:text-background transition-colors" />
                       </div>
                       <div className="min-w-0 flex-1">
-                        <h4 className="font-display font-bold text-[15px] text-[#111111] group-hover:text-background dark:text-foreground transition-colors leading-tight truncate">{tool.name}</h4>
-                        <p className="font-body text-[13px] leading-[1.35] text-[#555555] group-hover:text-background/80 dark:text-muted-foreground transition-colors mt-0.5 line-clamp-2">
+                        <h4 className="font-display font-bold text-[17px] sm:text-[18px] text-[#111111] group-hover:text-background dark:text-foreground transition-colors leading-tight mb-1 truncate">{tool.name}</h4>
+                        <p className="font-body text-[12.5px] sm:text-[13px] leading-[1.4] text-[#666666] group-hover:text-background/80 dark:text-muted-foreground transition-colors line-clamp-2">
                           {tool.category}
                         </p>
                       </div>
@@ -129,7 +129,7 @@ const SkillsSection = () => {
               </div>
             </div>
             
-            <div className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-dashed border-border text-[#555555] dark:text-muted-foreground font-body text-xs sm:text-[13px]">
+            <div className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-dashed border-border text-[#666666] dark:text-muted-foreground font-body text-xs sm:text-[13px]">
               <Sparkles size={15} />
               <span>Always learning new tools, technologies, and creative workflows.</span>
             </div>
