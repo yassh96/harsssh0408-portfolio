@@ -101,13 +101,13 @@ const ContactSection = () => {
       <div className="w-full max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="w-full mb-12 md:mb-16 lg:mb-20 text-center max-w-2xl mx-auto px-2">
-          <p className="text-background/60 font-medium tracking-widest uppercase text-xs sm:text-sm mb-3 sm:mb-4">
+          <p className="font-body text-background/60 font-medium tracking-widest uppercase text-xs sm:text-sm mb-3 sm:mb-4">
             Get In Touch
           </p>
-          <h2 className="heading-lg text-background">
+          <h2 className="heading-lg font-display text-background">
             Let's Work Together
           </h2>
-          <p className="body-md text-background/60 mt-3 sm:mt-4">
+          <p className="body-md font-body text-background/60 mt-3 sm:mt-4">
             Have a project in mind? Let's create something amazing together.
           </p>
         </div>
@@ -122,16 +122,16 @@ const ContactSection = () => {
                   href={item.href}
                   target={item.href.startsWith("http") ? "_blank" : undefined}
                   rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="w-full group flex items-center gap-3.5 sm:gap-4 p-3.5 sm:p-4 rounded-2xl border border-background/10 hover:border-background/30 hover:bg-background/5 transition-all duration-300"
+                  className="w-full group flex items-center gap-3.5 sm:gap-4 p-4 rounded-2xl border border-background/10 hover:border-background/30 hover:bg-background/5 transition-all duration-300"
                 >
-                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-background/10 flex items-center justify-center group-hover:bg-background group-hover:text-foreground transition-all duration-300 shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-background/10 flex items-center justify-center group-hover:bg-background group-hover:text-foreground transition-all duration-300 shrink-0">
                     <item.icon size={20} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-xs text-background/50 uppercase tracking-wider mb-0.5 sm:mb-1">
+                    <p className="font-body text-xs text-background/50 uppercase tracking-wider mb-1">
                       {item.label}
                     </p>
-                    <p className="font-medium text-sm sm:text-base truncate">
+                    <p className="font-body font-medium text-base truncate text-background">
                       {item.value}
                     </p>
                   </div>
@@ -144,10 +144,10 @@ const ContactSection = () => {
             <div className="w-full p-5 sm:p-6 rounded-2xl bg-background/5 border border-background/10">
               <div className="flex items-center gap-3 mb-2 sm:mb-3">
                 <MapPin size={18} className="text-background/60 shrink-0" />
-                <span className="text-sm text-background/60">Location</span>
+                <span className="font-body text-sm text-background/60">Location</span>
               </div>
-              <p className="font-medium text-base sm:text-lg">India</p>
-              <p className="text-xs sm:text-sm text-background/60 mt-1">Available for remote work worldwide</p>
+              <p className="font-body font-medium text-base sm:text-lg">India</p>
+              <p className="font-body text-xs sm:text-sm text-background/60 mt-1">Available for remote work worldwide</p>
             </div>
           </div>
 
@@ -161,7 +161,7 @@ const ContactSection = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full bg-background/5 border-background/20 h-13 sm:h-14 rounded-xl text-background placeholder:text-background/40 focus:border-background/50 focus:ring-0"
+                  className="w-full bg-background/5 border-background/20 h-14 sm:h-16 py-3.5 sm:py-4 px-4 sm:px-5 rounded-xl font-body text-background placeholder:text-background/40 placeholder:font-body text-base focus:border-background/50 focus:ring-0"
                 />
               </div>
               <div className="w-full">
@@ -172,7 +172,7 @@ const ContactSection = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full bg-background/5 border-background/20 h-13 sm:h-14 rounded-xl text-background placeholder:text-background/40 focus:border-background/50 focus:ring-0"
+                  className="w-full bg-background/5 border-background/20 h-14 sm:h-16 py-3.5 sm:py-4 px-4 sm:px-5 rounded-xl font-body text-background placeholder:text-background/40 placeholder:font-body text-base focus:border-background/50 focus:ring-0"
                 />
               </div>
             </div>
@@ -184,7 +184,7 @@ const ContactSection = () => {
                 value={formData.subject}
                 onChange={handleChange}
                 required
-                className="w-full bg-background/5 border-background/20 h-13 sm:h-14 rounded-xl text-background placeholder:text-background/40 focus:border-background/50 focus:ring-0"
+                className="w-full bg-background/5 border-background/20 h-14 sm:h-16 py-3.5 sm:py-4 px-4 sm:px-5 rounded-xl font-body text-background placeholder:text-background/40 placeholder:font-body text-base focus:border-background/50 focus:ring-0"
               />
             </div>
 
@@ -196,7 +196,7 @@ const ContactSection = () => {
                 onChange={handleChange}
                 required
                 rows={5}
-                className="w-full bg-background/5 border-background/20 rounded-xl text-background placeholder:text-background/40 resize-none focus:border-background/50 focus:ring-0 p-4"
+                className="w-full bg-background/5 border-background/20 min-h-[140px] sm:min-h-[160px] p-4 sm:p-5 rounded-xl font-body text-background placeholder:text-background/40 placeholder:font-body text-base resize-none focus:border-background/50 focus:ring-0"
               />
             </div>
 
@@ -204,7 +204,7 @@ const ContactSection = () => {
               type="submit"
               disabled={isSubmitting}
               size="lg"
-              className="w-full h-13 sm:h-14 rounded-xl bg-background text-foreground hover:bg-background/90 font-semibold text-base transition-colors flex items-center justify-center"
+              className="w-full h-14 sm:h-16 py-3.5 sm:py-4 rounded-xl bg-background text-foreground hover:bg-background/90 font-body font-semibold text-base sm:text-lg transition-colors flex items-center justify-center"
             >
               {isSubmitting ? (
                 "Sending..."
