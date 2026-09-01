@@ -17,12 +17,10 @@ const webTools = [
 ];
 
 const aiTools = [
-  { name: "Generative AI", icon: Sparkles, category: "Visual Ideation & Creative Exploration" },
-  { name: "AI Image Generation", icon: Image, category: "Concept Development & High-Fidelity Visuals" },
   { name: "Prompt Engineering", icon: Terminal, category: "Detailed Creative Prompting" },
-  { name: "AI-Assisted Web Dev", icon: Code, category: "Rapid Website & Landing Page Prototyping" },
-  { name: "Lovable & Antigravity", icon: Blocks, category: "AI-Assisted Website Development" },
-  { name: "ChatGPT, Claude & Gemini", icon: Bot, category: "Creative Research, Ideation & Dev Assistance" },
+  { name: "AI Image Generation", icon: Image, category: "Concept Development & High-Fidelity Visuals" },
+  { name: "AI-Assisted Web Dev", icon: Blocks, category: "Lovable, Antigravity & Rapid Prototyping" },
+  { name: "Generative AI Models", icon: Bot, category: "ChatGPT, Claude & Gemini" },
 ];
 
 const expertise = [
