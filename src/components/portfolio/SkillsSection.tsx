@@ -11,9 +11,9 @@ const designTools = [
 
 const webTools = [
   { name: "HTML & CSS", icon: Monitor, category: "Responsive Web Layouts" },
-  { name: "JavaScript", icon: Terminal, category: "Interactive Front-End Experiences" },
-  { name: "React & Tailwind CSS", icon: Code, category: "Modern Front-End Development" },
-  { name: "Git / GitHub / Vercel", icon: GitBranch, category: "Version Control & Deployment" },
+  { name: "JavaScript", icon: Terminal, category: "Basic DOM Manipulation & Interactivity" },
+  { name: "React & Tailwind CSS", icon: Code, category: "Familiar with Component-Based UI" },
+  { name: "Git / GitHub / Vercel", icon: GitBranch, category: "Basic Version Control & Hosting" },
 ];
 
 const aiTools = [
